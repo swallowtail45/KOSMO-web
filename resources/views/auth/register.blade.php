@@ -2,7 +2,7 @@
     
     <x-slot name="leftPanel">
         <div class="max-w-md text-left">
-            <h1 class="text-5xl font-bold leading-tight">
+            <h1 class="text-5xl font-bold leading-tight ">
                 <span class="text-gray-900">Mulai kelola</span>
                 <span class="text-cyan-600">kosmu</span>
                 <span class="block text-gray-900">hanya dalam</span>
