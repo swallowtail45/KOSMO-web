@@ -13,11 +13,26 @@
 
         <!-- Scripts -->
         @vite(['resources/css/app.css', 'resources/js/app.js'])
+        <!-- style aktif button -->
+        <style>
+        .is-active-nav {
+            background-color: #e0e7ffff; 
+            color: #4338ca;        
+            font-weight: 600;      
+            padding: 8px;          
+            padding-left: 1px;     
+            padding-right: 1px;    
+            padding-top: 8px;      
+            border-radius: 8px;     
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1); 
+            }
+            [x-cloak] {
+        display: none !important;
+        }
+</style>
     </head>
     <body class="font-sans antialiased">
-        <div class="min-h-screen bg-gray-100">
-            @include('layouts.navigation')
-
+        <x-sidebar />
             <!-- Page Heading -->
             @isset($header)
                 <header class="bg-white shadow">
@@ -29,8 +44,7 @@
 
             <!-- Page Content -->
             <main>
-                {{ $slot }}
+                 @yield('content')
             </main>
-        </div>
     </body>
 </html>
