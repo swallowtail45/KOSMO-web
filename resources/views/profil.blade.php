@@ -332,8 +332,8 @@
                     
                     <div class="bg-white rounded-lg shadow-xl w-full max-w-sm mx-4 overflow-hidden" @click.away="showDetailModal = false">
                         
-                        <div class="bg-gray-100 px-6 py-4 border-b border-gray-200 flex justify-between items-center">
-                            <h3 class="text-lg font-bold text-gray-800">Detail Pembayaran</h3>
+                        <div class="bg-kosmo-darkblue px-6 py-4 border-b border-gray-200 flex justify-between items-center">
+                            <h3 class="text-lg font-bold text-white">Detail Pembayaran</h3>
                             <button @click="showDetailModal = false" class="text-gray-500 hover:text-gray-700">
                                 <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
                             </button>
@@ -361,9 +361,6 @@
                                     </div>
                                 
                             </div>
-                            <div class="bg-gray-50 px-6 py-3 flex justify-center">
-                            <button @click="showDetailModal = false" class="text-gray-600 font-medium hover:text-gray-900 text-sm">Tutup</button>
-                        </div>
                         </div>
                 
         <x-app-layout>

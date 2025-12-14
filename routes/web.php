@@ -4,6 +4,7 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CompleteProfileController;
 use App\Http\Controllers\PaymentMethodController;
+use App\Http\Controllers\ReminderController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -50,6 +51,9 @@ Route::middleware('auth')->group(function () {
     Route::put('complete-profile', [CompleteProfileController::class, 'store'])->name('complete-profile.store');
     Route::post('/payment-methods', [PaymentMethodController::class, 'store'])->name('payment-method.store');
     Route::delete('/payment-methods/{paymentMethod}', [PaymentMethodController::class, 'destroy'])->name('payment-method.destroy');
+    Route::get('/reminder', [ReminderController::class, 'index'])->name('reminder.index');
+    Route::post('/reminder', [ReminderController::class, 'store'])->name('reminder.store');
+    Route::delete('/reminder/{reminder}', [ReminderController::class, 'destroy'])->name('reminder.destroy');
 });
 
 require __DIR__.'/auth.php';

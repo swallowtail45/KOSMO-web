@@ -100,7 +100,7 @@
                 </a>
 
                 {{-- reminder --}}
-                <a href="{{ route('reminder') }}" class="block w-full">
+                <a href="{{ route('reminder.index') }}" class="block w-full">
                     <div class="flex items-center w-full transition duration-150 ease-in-out
                         @if (request()->routeIs('reminder')) is-active-nav @endif"
                         @class([

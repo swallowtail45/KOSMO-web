@@ -29,25 +29,40 @@
         </div>
 
         {{-- form --}}
-        <form>
+        <form method="POST" action="{{ route('reminder.store') }}">
+            @csrf
             <div class="mb-4">
-                <label class="block mb-1">Nama Pengingat</label>
-                <input type="text" class="w-full p-2 rounded bg-white text-black" />
+                <x-input-label for="title" value="Judul Pengingat" class="block mb-1 text-white" />
+                <x-text-input id="title" class="w-full p-2 rounded bg-white text-black" type="text"
+                    name="title" placeholder="Judul Pengingat" required />
             </div>
             <div class="mb-4">
-                <label class="block mb-1">Pesan</label>
-                <textarea
+                <x-input-label for="description" value="Deskripsi" class="block mb-1 text-white" />
+                <textarea id="description" type="text" name="description"
                     class="w-full p-3 rounded-lg bg-white text-black border border-gray-300 focus:outline-none focus:ring focus:ring-blue-300"
-                    rows="4" placeholder="Masukkan deskripsi pembayaran..."></textarea>
+                    rows="4" placeholder="Masukkan deskripsi pengingat..." required></textarea>
             </div>
-            <!-- menu dropdown -->
-            <div class="mb-4">
-                <label class="block mb-1">No. Telepon Penyewa</label>
-                <input type="text" class="w-full p-2 rounded bg-white text-black" />
-            </div>
-            <button class="mb-4 px-5 py-2 bg-[#8be1d1] text-black rounded-lg ml-auto block">
+            <div>
+                    <x-input-label for="media" value="Media Reminder" class="block mb-1 text-white" />
+                    <select name="media" class="w-full p-2 rounded bg-white text-black">
+                        <option value="Whatsapp">Whatsapp</option>
+                        <option value="Email">Email</option>
+                        <option value="SMS">SMS</option>
+                    </select>
+                </div>
+
+                <div>
+                    <x-input-label for="status" value="Status Reminder" class="block mb-1 text-white" />
+                    <select name="status" class="w-full p-2 rounded bg-white text-black">
+                        <option value="Aktif">Aktif</option>
+                        <option value="Tidak Aktif">Tidak Aktif</option>
+                    </select>
+                </div>
+             <button type="submit" class= "mt-5 mb-4 px-5 py-2 bg-[#8be1d1] text-black rounded-lg ml-auto block">
                 Tambah
             </button>
+
+            
     </div>
 
     </form>
