@@ -41,7 +41,7 @@
                 Solusi inovatif untuk Kelola kos menjadi lebih mudah dan praktis, dirancang dengan fokus pada pengalaman pengguna.
             </p>
             <div class="flex flex-col sm:flex-row justify-center md:justify-start gap-4">
-                <a href="#features" class="bg-kosmo-cyan text-white text-lg font-semibold px-8 py-4 rounded-lg shadow-lg hover:bg-kosmo-lightcyan transition duration-300 transform hover:scale-105">
+                <a href="{{route('login')}}" class="bg-kosmo-cyan text-white text-lg font-semibold px-8 py-4 rounded-lg shadow-lg hover:bg-kosmo-lightcyan transition duration-300 transform hover:scale-105">
                     Kelola Sekarang!
                 </a>
             </div>

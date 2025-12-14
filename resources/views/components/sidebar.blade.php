@@ -27,18 +27,19 @@
 
             <!-- logo profil -->
             <div class="flex p-4 border-b border-gray-100 mb-6 items-center"
-                :class="{ 'justify-center': !open, 'justify-start': open }"><a href="{{ route('profil') }}">
+                :class="{ 'justify-center': !open, 'justify-start': open }"><a href="{{ route('profile.edit') }}">
                 <div class="bg-gray-200 rounded-full transition-all duration-300"
                     :class="{
                         'h-12 w-12 mr-3': open,
                         'h-8 w-8': !open
                     }">
+                    <img src="{{ asset('storage/' . Auth::user()->avatar) }}" alt="Profile" class="rounded-full h-full w-full object-cover">
                     
                    
                 </div> </a>
                 <!-- nama profil -->
                 <div x-show="open">
-                    <p class="font-semibold text-sm">Asep Kasep</p>
+                    <p class="font-semibold text-sm">{{ auth()->user()->name }}</p>
                     <p class="text-xs text-gray-500">Mengelola 1 kos</p>
                 </div>
 
@@ -122,7 +123,7 @@
                     </div>
                 </a>
                 {{-- profil --}}
-                <a href="{{ route('profil') }}" class="block w-full">
+                <a href="{{ route('profile.edit') }}" class="block w-full">
                     <div class="flex items-center p- hover:bg-gray-100 active:bg-gray-200 transition duration-150 ease-in-out
                         @if (request()->routeIs('profil')) is-active-nav @endif"
                         @class([

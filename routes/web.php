@@ -2,6 +2,8 @@
 
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\CompleteProfileController;
+use App\Http\Controllers\PaymentMethodController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -41,9 +43,13 @@ Route::get('/dashboard', function () {
 
 
 Route::middleware('auth')->group(function () {
-    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+    Route::get('/profil', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::patch('/profil', [ProfileController::class, 'update'])->name('profile.update');
+    Route::delete('/profil', [ProfileController::class, 'destroy'])->name('profile.destroy');
+    Route::get('complete-profile', [CompleteProfileController::class, 'create'])->name('complete-profile.create');
+    Route::put('complete-profile', [CompleteProfileController::class, 'store'])->name('complete-profile.store');
+    Route::post('/payment-methods', [PaymentMethodController::class, 'store'])->name('payment-method.store');
+    Route::delete('/payment-methods/{paymentMethod}', [PaymentMethodController::class, 'destroy'])->name('payment-method.destroy');
 });
 
 require __DIR__.'/auth.php';
