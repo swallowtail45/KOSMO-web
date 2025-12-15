@@ -222,14 +222,22 @@
 
                     <!-- hapus data penyewa -->
                     <div class="flex items-center justify-between pb-4">
-                        <p>Hapus Semua Data Penyewa</p>
-                        <button class="bg-teal-500 text-white px-4 py-1 rounded hover:bg-teal-600">Hapus</button>
+                        <p>Hapus Semua Data Kamar</p>
+                        <form action="{{ route('profile.destroy-rooms') }}" method="POST" onsubmit="return confirm('PERINGATAN: Anda yakin ingin menghapus SEMUA KAMAR? Data penyewa di dalamnya juga akan terhapus.');">
+                            @csrf
+                            @method('DELETE')
+                        <button type="submit" class="bg-teal-500 text-white px-4 py-1 rounded hover:bg-teal-600">Hapus</button>
+                        </form>
                     </div>
 
                     <!-- button hapaus semua data -->
                     <div class="flex items-center justify-between pb-4">
-                        <p>Hapus Semua Data Penyewa, Kamar, dan Kos</p>
-                        <button class="bg-teal-500 text-white px-4 py-1 rounded hover:bg-teal-600">Hapus</button>
+                        <p>Hapus Semua Data Kos</p>
+                        <form action="{{ route('profile.destroy-kos') }}" method="POST" onsubmit="return confirm('PERINGATAN: Anda yakin ingin menghapus SEMUA DATA KOS?');">
+                            @csrf
+                            @method('DELETE')
+                        <button type="submit" class="bg-teal-500 text-white px-4 py-1 rounded hover:bg-teal-600">Hapus</button>
+                        </form>
                     </div>
 
                 </div>

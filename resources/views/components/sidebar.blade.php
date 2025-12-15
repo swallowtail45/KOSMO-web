@@ -76,7 +76,7 @@
                 </a>
 
                 {{-- kelola --}}
-                <a href="{{ route('kelola-kos') }}" class="block w-full">
+                <a href="{{ route('room.index') }}" class="block w-full">
                     <div class="flex items-center w-full
                         @if (request()->routeIs('kelola-kos')) is-active-nav @endif"
                         @class([

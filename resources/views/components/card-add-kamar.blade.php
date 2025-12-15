@@ -36,53 +36,55 @@
         </div>
 
         {{-- form --}}
-        <form>
+        <form method="POST" action="{{ route('room.store') }}" class="p-6 space-y-4">
+                @csrf
+
 
             <div class="grid grid-cols-2 gap-4 mb-4">
             <!-- nama -->
                 <div>
                     <label class="block mb-1">Nama Kamar</label>
-                    <input type="text" class="w-full p-2 rounded bg-white text-black" />
+                    <input type="text" name="name" class="w-full p-2 rounded bg-white text-black" required/>
                 </div>
             <!-- properti -->
                 <div>
                     <label class="block mb-1">Properti</label>
-                    <input type="text" class="w-full p-2 rounded bg-white text-black" />
+                    <input type="text" name="property_type" class="w-full p-2 rounded bg-white text-black" required/>
                 </div>
             </div>
             <!-- penyewa -->
             <div class="mb-4">
                 <label class="block mb-1">Penyewa</label>
-                <input type="text" class="w-full p-2 rounded bg-white text-black" />
+                <input type="text" name="tenant_name" class="w-full p-2 rounded bg-white text-black" />
             </div>
             <!-- no telp -->
             <div class="mb-4">
                 <label class="block mb-1">No. Telepon</label>
-                <input type="text" class="w-full p-2 rounded bg-white text-black" />
+                <input type="text" name="tenant_phone" class="w-full p-2 rounded bg-white text-black" />
             </div>
             <!-- harga -->
             <div class="mb-4">
                 <label class="block mb-1">Harga</label>
-                <input type="number" class="w-full p-2 rounded bg-white text-black" />
+                <input type="number" name="price" class="w-full p-2 rounded bg-white text-black" />
             </div>
             <!-- tggl sewa -->
             <div class="grid grid-cols-2 gap-4 mb-6">
                 <div>
                     <label class="block mb-1">Tanggal Sewa</label>
-                    <input type="date" class="w-full p-2 rounded bg-white text-black" />
+                    <input type="date" name="start_date" class="w-full p-2 rounded bg-white text-black" />
                 </div>
 
                 <!-- menu dropdown -->
                 <div>
                     <label class="block mb-1">Status Sewa</label>
-                    <select class="w-full p-2 rounded bg-white text-black">
-                        <option value="kosong">Tersedia</option>
-                        <option value="disewa">Sudah Disewa</option>
+                    <select class="w-full p-2 rounded bg-white text-black" name="status">
+                        <option value="Tersedia">Tersedia</option>
+                        <option value="Sudah Disewa">Sudah Disewa</option>
                     </select>
                 </div>
             </div>
 
-            <button class="px-5 py-2 bg-[#8be1d1] text-black rounded-lg ml-auto block">
+            <button type="submit" class="px-5 py-2 bg-[#8be1d1] text-black rounded-lg ml-auto block">
                 Tambah Kamar
             </button>
 

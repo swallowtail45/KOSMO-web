@@ -78,4 +78,18 @@ class ProfileController extends Controller
 
         return Redirect::to('/');
     }
+    public function destroyAllRooms(Request $request): RedirectResponse
+    {
+        $request->user()->rooms()->delete();
+        return back()->with('status', 'rooms-deleted');
+    }
+
+    /**
+     * Hapus SEMUA Data Kos (Properti).
+     */
+    public function destroyAllKos(Request $request): RedirectResponse
+    {
+        $request->user()->properties()->delete();
+        return back()->with('status', 'kos-deleted');
+    }
 }

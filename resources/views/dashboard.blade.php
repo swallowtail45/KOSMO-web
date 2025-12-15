@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard Kos</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 
 
@@ -27,19 +28,19 @@
             <!-- Card 1 -->
             <div class="bg-gradient-to-br from-slate-700 to-slate-900 p-6 rounded-xl shadow text-white">
                 <p class="text-lg">Total Penyewa</p>
-                <h2 class="text-3xl font-semibold mt-2">12 Orang</h2>
+                <h2 class="text-3xl font-semibold mt-2">{{ $totalPenyewa }} Orang</h2>
             </div>
 
             <!-- Card 2 -->
             <div class="bg-gradient-to-br from-slate-700 to-slate-900 p-6 rounded-xl shadow text-white">
                 <p class="text-lg">Total Kos</p>
-                <h2 class="text-3xl font-semibold mt-2">1 Kos</h2>
+                <h2 class="text-3xl font-semibold mt-2">{{ $totalKos }} Kos</h2>
             </div>
 
             <!-- Card 3 -->
             <div class="bg-gradient-to-br from-slate-700 to-slate-900 p-6 rounded-xl shadow text-white">
                 <p class="text-lg">Total Kamar</p>
-                <h2 class="text-3xl font-semibold mt-2">12 Kamar</h2>
+                <h2 class="text-3xl font-semibold mt-2">{{ $totalKamar }} Kamar</h2>
             </div>
 <x-app-layout>
 </x-app-layout>
@@ -58,9 +59,77 @@
 
         <!-- Chart Placeholder -->
         <div class="bg-white mt-6 p-6 rounded-xl shadow max-w-5xl">
-            <div class="w-full h-64 flex items-center justify-center text-gray-500">
-                <p>grafik</p>
-            </div>
+            <div class="w-full h-80">
+                    <canvas id="revenueChart"></canvas>
+                </div>
+                <script>
+        const ctx = document.getElementById('revenueChart').getContext('2d');
+        
+        // Data dari Controller Laravel
+        const rawData = {{ $chartData }}; 
+
+        new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: ['Jan', 'Feb', 'Mar', 'Apr', 'Mei', 'Jun', 'Jul', 'Agu', 'Sep', 'Okt', 'Nov', 'Des'],
+                datasets: [{
+                    label: 'Pendapatan (Rp)',
+                    data: rawData,
+                    borderColor: '#4b5563', // Warna Garis (Gray-600)
+                    backgroundColor: 'rgba(75, 85, 99, 0.1)', // Warna Fill
+                    borderWidth: 1.5,
+                    pointBackgroundColor: '#fff',
+                    pointBorderColor: '#4b5563',
+                    pointRadius: 4,
+                    tension: 0, // Garis lurus (0) atau melengkung (0.4)
+                    fill: false
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        display: false // Sembunyikan legenda
+                    },
+                    tooltip: {
+                        callbacks: {
+                            label: function(context) {
+                                let label = context.dataset.label || '';
+                                if (label) {
+                                    label += ': ';
+                                }
+                                if (context.parsed.y !== null) {
+                                    label += new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR' }).format(context.parsed.y);
+                                }
+                                return label;
+                            }
+                        }
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        grid: {
+                            color: '#f3f4f6'
+                        },
+                        ticks: {
+                            font: { size: 10 }
+                        }
+                    },
+                    x: {
+                        grid: {
+                            display: true,
+                            color: '#f3f4f6'
+                        },
+                        ticks: {
+                            font: { size: 10 }
+                        }
+                    }
+                }
+            }
+        });
+    </script>
         </div>
 
     </div>

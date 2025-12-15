@@ -36,54 +36,54 @@
         </div>
 
         {{-- form --}}
-        <form>
-
+        <form method="POST" action="{{ route('property.store') }}" class="p-6 space-y-4">
+                @csrf
             <div class="grid grid-cols-2 gap-4 mb-4">
             <!-- nama -->
                 <div>
                     <label class="block mb-1">Nama Kos</label>
-                    <input type="text" class="w-full p-2 rounded bg-white text-black" />
+                    <input type="text" name="name" class="w-full p-2 rounded bg-white text-black" required/>
                 </div>
             <!-- pemilik -->
                 <div>
                     <label class="block mb-1">Pemilik</label>
-                    <input type="text" class="w-full p-2 rounded bg-white text-black" />
+                    <input type="text" name="owner_name" class="w-full p-2 rounded bg-white text-black" required/>
                 </div>
             </div>
             <!-- alamat -->
             <div class="mb-4">
                 <label class="block mb-1">Alamat</label>
-                <input type="text" class="w-full p-2 rounded bg-white text-black" />
+                <input type="text" name="address" class="w-full p-2 rounded bg-white text-black" required/>
             </div>
             <!-- no telp -->
             <div class="mb-4">
                 <label class="block mb-1">No. Telepon</label>
-                <input type="text" class="w-full p-2 rounded bg-white text-black" />
+                <input type="text" name="owner_phone" class="w-full p-2 rounded bg-white text-black" required/>
             </div>
             <!-- harga -->
             <div class="mb-4">
                 <label class="block mb-1">Harga</label>
-                <input type="number" class="w-full p-2 rounded bg-white text-black" />
+                <input type="number" name="price" class="w-full p-2 rounded bg-white text-black" required/>
             </div>
             <!-- jmlh kamar -->
             <div class="grid grid-cols-2 gap-4 mb-6">
                 <div>
                     <label class="block mb-1">Jumlah Kamar</label>
-                    <input type="text" class="w-full p-2 rounded bg-white text-black" />
+                    <input type="text" name="room_total" class="w-full p-2 rounded bg-white text-black" required/>
                 </div>
 
                 <!-- menu dropdown -->
                 <div>
                     <label class="block mb-1">Status Kos</label>
-                    <select class="w-full p-2 rounded bg-white text-black">
-                        <option value="kosong">Aktif</option>
-                        <option value="disewa">Tidak Aktif</option>
+                    <select name="status" class="w-full p-2 rounded bg-white text-black" required>
+                        <option value="Aktif">Aktif</option>
+                        <option value="Tidak Aktif">Tidak Aktif</option>
                     </select>
                 </div>
             </div>
 
-            <button class="px-5 py-2 bg-[#8be1d1] text-black rounded-lg ml-auto block">
-                Tambah Kamar
+            <button type="submit" class="px-5 py-2 bg-[#8be1d1] text-black rounded-lg ml-auto block">
+                Tambah Kos
             </button>
 
         </form>
